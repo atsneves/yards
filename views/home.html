@@ -1,0 +1,143 @@
+﻿<!DOCTYPE HTML>
+
+<html lang="pt-br">
+
+<head>
+
+	<meta charset="UTF-8">
+
+	<link rel="stylesheet" type="text/css" href="/default.css">
+	<link rel="stylesheet" type="text/css" href="/master.css">
+
+	<title>Yards - Design</title>
+	<script type="text/javascript">
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+    </script>
+</head>
+
+<body onLoad="MM_preloadImages('/imagens/b_convide_mouse.jpg')">
+
+<div class="all">
+    <div class="btop">
+	<!-- Linha Usuário Ajuda e Opções -->    
+    	<div class="ln1">
+        	<ul style="float: left;">
+            	<li><b><%= facebook.name %></b></li>
+                <li class="li1">&nbsp;</li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+            <a href="#" class="gearopc"> <span></span></a>
+		<!-- Ajuda -->
+            <ul style="float: right; padding-right: 10px;">
+            	<li><b>Vender</b></li>
+                	<li class="li1">&nbsp;</li>
+                <li><b>Ajuda</b></li>
+                	<li class="li1">&nbsp;</li>
+                <li><b>Fale Conosco</b></li>
+            </ul>
+        </div>
+		<!-- Busca -->
+        <div class="ln2">
+        	<!-- Categorias Marcas -->
+            <ul class="it2">    
+                <li>Categorias</li>
+                	<li class="it">&nbsp;</li>
+                <li class="div">Marcas</li>
+                	<li class="it">&nbsp;</li>
+            </ul>
+            <!-- Busca -->
+            <div class="search">
+            <ul class="filtro"><li>Todo o site</li><li class="ol">&nbsp;</li></ul>
+            	<input type="text" placeholder="Procure aqui por ítens, amigos, marcas, categorias de produtos" class="noclass" />
+            	<input type="button" value="Buscar" style="float:right; margin-right: -4px; margin-top: -1px;" />
+            </div>
+        </div>
+    </div>
+    
+    <!-- Esquerda -->
+    
+    <div class="content1">
+    <!-- Dicas -->
+
+    	<a href="#">Home</a>
+        <div  style="margin-top: 15px;" class="boxWithe"><span class="leaf">Dicas:</span> Para criar um novo evento clique no “<span class="leaf">+</span>” ao lado de “<span class="dark">Eventos</span>”</div>
+    
+    <!-- Experiência Yards -->
+    
+        <div class="boxGray" style="margin-top: 15px;">
+        	<p><span class="dark">Deixe seu Yard mais completo.</span> Siga os passos abaixo para melhorar sua experiência no Yards.</p>
+        	<ul class="boxGul">
+            	<li><span class="leaf">1&nbsp;&nbsp; </span> Comece a adicionar produtos <a href="#">Saiba mais</a></li>
+            	<li><span class="leaf">2&nbsp;&nbsp; </span>Convide e adicione mais pessoas à sua lista de amigos <a href="#">Saiba mais</a></li>
+                <li><span class="leaf">3&nbsp;&nbsp; </span>Escolha as categorias de produtos de seu interesse <a href="#">Saiba mais</a></li>
+                <li><span class="leaf">4&nbsp;&nbsp; </span>Conecte-se a outras redes sociais <a href="#">Saiba mais</a></li>
+                <li><span class="leaf">5&nbsp;&nbsp; </span>Adicione seu local de estudo e/ou trabalho às suas informações <a href="#">Saiba mais</a></li>
+            </ul>
+        </div>
+     <!-- Fotos de Produtos -->
+        <div  style="margin-top: 15px;" class="boxWithe">
+        	<br/>
+            <br/>
+            
+            
+        <div id="nenhum">
+        <p>   
+            Seus amigos ainda não colocaram nenhum produto à venda.</p><br/><br/><br/><br/><br />
+            
+            <a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('b_convida','','/imagens/b_convide_mouse.png',1)"><img src="/imagens/b_convide.png" width="293" height="72" id="b_convida"></a> </div>
+            
+            
+        </div>
+    </div>
+    
+    <!-- Direita -->
+    
+    <div class="sections">
+    
+    	<!-- Alertas Mensagens -->
+        <div class="boxGray">Alertas <span class="wick">1</span></div>
+        <div class="boxGray">Mensagens <span class="wick">5</span></div>
+		
+        <!-- Inicio menu -->
+        <div style="margin-top: 20px;" class="boxWithe dark">Meus produto(s) 10<span class="ico2"></span><span class="ico1"></span></div>
+        <!-- Submenu -->
+        <ul class="submenu">
+        	<li class="boxGray noshadow">Adidas</li>
+        	<li class="boxGray noshadow">Nike</li>
+        	<li class="boxGray noshadow">Puma</li>
+        </ul>
+        <div style="margin-top: 20px;" class="boxWithe dark">Meus produto(s) 10<span class="ico2"></span><span class="ico1"></span></div>
+        <!-- Submenu -->
+        <ul class="submenu">
+        	<li class="boxGray noshadow">Adidas</li>
+        	<li class="boxGray noshadow">Nike</li>
+        	<li class="boxGray noshadow">Puma</li>
+        </ul>
+    
+    </div>
+</div>
+
+</body>
+
+</html>
+

@@ -1,0 +1,28 @@
+{
+  "name": "yards",
+  "version": "0.1.0",
+  "description": "yards",
+  "main": "./live.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified! Configure in package.json\" && exit 1"
+  },
+  "repository": "",
+  "keywords": [
+    "Node.js",
+    "Eclipse",
+    "Nodeclipse"
+  ],
+  "author": "Anderson Neves",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "dependencies"  : { 
+      "express" : ">0.0.0",
+      "mongodb"   : ">1.2.14",
+	  "mongoose"  : ">3.6.5",
+	  "socket.io" : ">0.0.0",
+	  "ejs" : ">0.4.3",
+	  "express-partials" :">0.1.0",
+	  "fbgraph" : ">0.0.0",
+	  "everyauth":">0.0.0"
+  }
+}

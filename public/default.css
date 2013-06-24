@@ -1,0 +1,331 @@
+#bot_5 p{
+
+font-family:Arial, Helvetica, sans-serif; font-size: 11px; color:#333; text-align: center; width: 150px; font-weight:bold; margin-top: 19px; margin-left: 40px;		
+
+}
+
+#bot_4 p{
+
+font-family:Arial, Helvetica, sans-serif; font-size: 11px; color:#333; text-align: center; width: 150px; font-weight:bold; margin-top: 19px; margin-left: 20px;		
+
+}
+
+#bot_3 p{
+
+font-family:Arial, Helvetica, sans-serif; font-size: 11px; color:#333; text-align: center; width: 150px; font-weight:bold; margin-top: 19px; margin-left: 20px;		
+
+}
+
+#bot_2 p{
+
+font-family:Arial, Helvetica, sans-serif; font-size: 11px; color:#333; text-align: center; width: 100px; font-weight:bold; margin-top: 19px; margin-left: 45px;		
+
+}
+
+#bot_1 p{
+
+font-family:Arial, Helvetica, sans-serif; font-size: 11px; color:#333; text-align: center; width: 100px; font-weight:bold; margin-top: 19px; margin-left: 30px;	
+
+}
+
+#data_dia2 ul{
+
+margin-top: 46px;
+margin-left: 315px;
+width: 80px;	
+position: absolute;
+	
+}
+
+#it{
+
+margin-left: 190px;
+margin-top: -13px;	
+
+}
+
+
+#sexo ul{
+ margin-top: 40px;
+ margin-left: 870px;
+ width: 200px;
+ 
+	
+}
+
+#data_dia ul{
+
+margin-top: 53px;
+margin-left: 870px;
+width: 31px;	
+	
+}
+
+#nenhum img{
+
+margin-left: 390px;
+margin-top: -100px;	
+	
+}
+
+#nenhum p{
+
+font-family: Arial, Helvetica, sans-serif;
+color: #999;
+font-size: 18px;
+font-weight: bold;
+text-align: center;
+margin-top: -5px;
+	
+	
+}
+
+#b_facebook2 {
+	
+margin-top: 560px;
+position: absolute;	
+margin-left: 840px;
+z-index:100;
+	
+}
+
+#ou2 img{
+
+margin-top: 520px;
+margim-left: 1050px;
+position: absolute;
+padding-left: 450px;	
+	
+}
+
+#b_criar_yard{
+
+margin-top: 170px;
+margin-left: 850px;
+positon: absolute;
+
+	
+}
+
+.rodape3 img{
+	
+	margin-left: -1000px;
+	margin-top: 300px ;
+	position: absolute;
+}
+
+#sexo img{
+
+margin-left: 850px;
+margin-top: 120px;
+position: absolute;	
+	
+}
+
+#sexo p{
+	
+margin-left: 870px;
+margin-top: 100px;
+position: absolute;
+font-weight:bold;
+	
+}
+
+#data_ano{
+
+margin-left: 1040px;
+margin-top: 50px;
+position: absolute;	
+z-index: 100;
+	
+}
+
+#data_mes{
+
+margin-left: 955px;
+margin-top: 50px;
+position: absolute;	
+	
+}
+
+#data_dia img{
+
+margin-left: 860px;
+margin-top: 50px;
+position: absolute;	
+	
+}
+
+#data_dia p{
+
+margin-left: 870px;
+margin-top: 30px;
+position: absolute;
+font-weight:bold;	
+	
+}
+
+#cad2 {
+
+font-family:Arial, Helvetica, sans-serif;
+color:#000;
+font-weight: bold;
+font-size: 9px;
+margin-left: 870px;
+margin-top: -250px;
+position: absolute;	
+	
+}
+
+.form2{ 
+
+width: 300px; 
+margin-left: 870px;
+position: absolute;
+margin-top: -210px;
+
+}
+
+.p_bem {
+	
+	margin-left:130px;
+	position: absolute;
+	font-size: 14px;
+	
+	}
+
+#bem_vindo{
+
+margin: 20px auto;	
+
+	
+}
+
+#ou{
+
+margin-top: -100px;
+position: absolute;
+margin-left: 870px;	
+	
+}
+
+#b_facebook {
+	
+margin-top: -50px;
+position: absolute;	
+margin-left: 850px;
+z-index:100;
+	
+}
+
+#b_convite {
+
+margin-top: 17px;
+z-index: 100;
+margin-left: 70px;
+positon: absolute;
+
+	
+}
+
+#cad{
+
+margin-left: 900px;
+font-family: Arial, Helvetica, sans-serif;
+color:#333;
+position: absolute;
+margin-top: -340px;
+font-size: 11px;
+font-weight:bold;
+	
+}
+
+
+
+
+.rodape img{
+
+margin-top: 420px;
+position: absolute;
+
+	
+}
+
+.form1{ 
+
+width: 200px; 
+margin-left: 900px;
+position: absolute;
+margin-top: -290px;
+
+}
+
+#pman{
+	
+margin-left: 100px;
+	margin-top: 10px;
+}
+
+body{
+	background: #F6F6F6;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	margin:0;
+	padding:0;
+}
+
+
+/* Padrões */
+
+.all{ width: 100%; height: 100%; position: absolute;}
+.col_left{ float: left; width: 30%; height: 100%;}
+.col_right{ float: left; width: 70%; height: 100%;}
+
+/* Conteudo Col_Left*/
+.yard{ background: url('imagens/logoyard.gif') no-repeat; width:211px; height:103px; margin: 30px auto;}
+.csoon, .pman{ width: 380px;padding-left: 100px;}
+.pman{ font-size: 11px; font-weight: bold;} 
+
+/* Formularios */
+input[type=text]{ border: 1px solid #999; border-radius: 6px; padding: 5px; margin: 10px 5px 0 0;}
+input[type=button], .wick{
+
+border-top: 1px solid #6dc743;
+   background: #498a24;
+   background: -webkit-gradient(linear, left top, left bottom, from(#6dc743), to(#498a24));
+   background: -webkit-linear-gradient(top, #6dc743, #498a24);
+   background: -moz-linear-gradient(top, #6dc743, #498a24);
+   background: -ms-linear-gradient(top, #6dc743, #498a24);
+   background: -o-linear-gradient(top, #6dc743, #498a24);
+   padding: 6px 20px;
+   -webkit-border-radius: 7px;
+   -moz-border-radius: 7px;
+   border-radius: 7px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 0 2px;
+   -moz-box-shadow: rgba(0,0,0,1) 0 0 2px;
+   box-shadow: rgba(0,0,0,1) 0 0 2px;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 12px;
+   font-family: Helvetica, Arial, Sans-Serif;
+   text-decoration: none;
+   vertical-align: middle;
+   margin: 0px;
+   border: none;
+}
+.wick{ position: absolute; top: 9px; right: 9px; padding: 6px 13px;}
+input[type=button]:hover{
+   background: #74ab54;
+   background: -webkit-gradient(linear, left top, left bottom, from(#9ade78), to(#74ab54));
+   background: -webkit-linear-gradient(top, #9ade78, #74ab54);
+   background: -moz-linear-gradient(top, #9ade78, #74ab54);
+   background: -ms-linear-gradient(top, #9ade78, #74ab54);
+   background: -o-linear-gradient(top, #9ade78, #74ab54);
+}
+.frm1{ width: 350px; padding: 30px 0 0 100px;}
+
+
+
+
+
