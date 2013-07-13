@@ -20,14 +20,14 @@ var userModule = require("./model/user.js");
 
 var authUrl = graph.getOauthUrl({
     "client_id":     "467592886661340"
-  , "redirect_uri":  "http://localhost:2400/facebook/logged"
+  , "redirect_uri":  "http://ec2-54-218-210-177.us-west-2.compute.amazonaws.com:2400/facebook/logged"
 });
 
 var conf = {
 	client_id:      '467592886661340'
 	, client_secret:  '61d508188ece22dcdb67aceed8794d24'
 	, scope:          'email, user_about_me, user_birthday, user_location, publish_stream'
-	, redirect_uri:   'http://localhost:2400/facebook/logged'
+	, redirect_uri:   'http://ec2-54-218-210-177.us-west-2.compute.amazonaws.com:2400/facebook/logged'
 };
 
 // after user click, auth `code` will be set
