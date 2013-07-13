@@ -1,11 +1,13 @@
 
 <div class="form1">
-            <input type="text" placeholder="E-mail" style="width:100%;" />
-            <input type="text" placeholder="Senha" style="width:100%;" />
-             <input name="" type="checkbox" value="" style="margin-top: 15px;" />Manter conectado<br>
-            <input type="button" value="Enviar" style="margin-top: 20px;" /><br /><br />
-            Esqueceu o e-mail ou senha?
-            
+	<form action="/login" method="post" name="form">
+
+            <input type="text" placeholder="E-mail" name="email" id="email" style="width:100%;" />
+            <input type="password" placeholder="Senha" name="senha" id="senha" style="width:100%;" />
+            <br> <input name="" type="checkbox" value="" style="margin-top: 15px;" />Manter conectado<br>
+            <input type="submit" value="Enviar" style="margin-top: 20px;" /><br /><br />
+            <a href="/reset">Esqueceu o e-mail ou senha?</a>
+ </form>           
             
                   
            
@@ -23,3 +25,35 @@
         
         
     	</div>
+    	
+    	
+<!-- JQUERY -->
+ <!-- Placed at the end of the document so the pages load faster -->
+    <!-- JQUERY -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="/js/jquery-1.7.1.min.js"><\/script>')</script>
+ 	<script type="text/javascript" src="/js/scripts.js"></script>
+    <script type="text/javascript" src="/js/jquery.form.js"></script>
+    <script type="text/javascript" src="/js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.maskedinput.min.js"></script>
+        
+
+<script>
+	jQuery(function($){
+	  
+	   
+		   $('form').validate({
+	        rules:{
+	            email:{required: true,email:true},
+	            senha:{required: true}
+	        },
+	        messages:{
+	            email:{required: "Campo e-mail obrigat&oacute;rio",email:"E-mail inv&acute;lido"},
+	            senha:{required: "O campo de senha &eacute; obrigat&oacute;rio"}
+	           
+	        }
+	    });
+	   	   	
+	});
+
+</script>    	

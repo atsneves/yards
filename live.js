@@ -1,23 +1,33 @@
 var express = require('express')
   , partials = require('express-partials')
   , app = express();
+var mailConfig = require("./util/email.js");
 
+var serverMail  = mailConfig.ServerMail;
 
 var graph = require('fbgraph');
 
 var mongoose = require("mongoose");
 
 
+var database = require("./model/database.js");
+
+var DbUser = database.User;
+
+
+//Load Model's
+var userModule = require("./model/user.js");
+
 var authUrl = graph.getOauthUrl({
     "client_id":     "467592886661340"
-  , "redirect_uri":  "http://ec2-54-218-210-177.us-west-2.compute.amazonaws.com:2400/facebook/logged"
+  , "redirect_uri":  "http://localhost:2400/facebook/logged"
 });
 
 var conf = {
 	client_id:      '467592886661340'
 	, client_secret:  '61d508188ece22dcdb67aceed8794d24'
 	, scope:          'email, user_about_me, user_birthday, user_location, publish_stream'
-	, redirect_uri:   'http://ec2-54-218-210-177.us-west-2.compute.amazonaws.com:2400/facebook/logged'
+	, redirect_uri:   'http://localhost:2400/facebook/logged'
 };
 
 // after user click, auth `code` will be set
@@ -37,6 +47,7 @@ app.configure(function(){
 	app.use(express.cookieParser());
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
+	app.use(express.session({secret: 'yards2013SessionLogin'}));
 	app.use('/', express.static('public'));
 	app.engine('.html', require('ejs').renderFile);
 	app.set("view engine","html");
@@ -47,17 +58,27 @@ app.configure(function(){
 });
 
 app.get("/",function(req,res,next){
-	res.redirect("/login");
+	if(req.session.user)
+		res.redirect("/home");
+	else
+		res.redirect("/login");
+	
+	
 	
 	//res.end();
 });
 app.get("/login",function(req,res,next){
+	
+	if(req.session.user)
+		res.redirect("/home");
+	
+	
 	if (typeof(req.query.error) != "undefined")
 		err = req.query.error;
 	else
 		err = "";
-		 
-		res.render('index',{layout: 'login',title:"Yards",erro:err});
+	
+	res.render('index',{layout: 'login',title:"Yards",erro:err});
 });
 
 
@@ -104,6 +125,19 @@ app.get("/facebook/logged",function(req,resp){
 	});
 });
 
+app.get("/home",function(req,res,next){
+	if(req.session.user)
+	{
+		res.render('index',{layout: 'home',user:req.session.user,title:"Bem vindo ao Yards"});
+	}
+	else
+	{
+		res.redirect("/login/?error=Proibido acesso");
+	}
+});
+
+
+
 app.get("/login/auth",function(req,res){
 	graph.get("/me", function(err, resp) {
 		console.log(resp.error);
@@ -113,17 +147,123 @@ app.get("/login/auth",function(req,res){
 		}	
 		else
 		{
-			res.render('index',{layout: 'home',facebook:resp});
+			//Verifica se existe usuário e cria
+			
+			
+			console.log(serverMail);
+			console.log(resp);
+			
+			DbUser.findOne({email:resp.email},function(err, user){
+				
+				if(!err && user)
+				{
+					req.session.user = user;
+					res.redirect("/home");
+				}
+				else
+				{
+					var usr = new DbUser();
+					
+					usr.name = resp.first_name;
+					usr.lastname =  resp.last_name;
+					usr.email = resp.email;
+					usr.password = resp.birthday;
+					usr.status = "A";
+					
+					usr.save(function(errar,saveLocal){
+						if(!errar)
+						{
+							serverMail.send({
+								   text:    "Obrigado por entrar no Yards utilizando o facebook, sua senha de acesso é "+resp.birthday+" você poderá altera-la a qualquer momento dentro de nosso sistema. \n Equipe Yards.", 
+								   from:    "Yards <atsneves@gmail.com>", 
+								   to:      resp.email,
+								   subject: "Facebook Yards",
+								   attachment: 
+								   [
+								      {data:"<html>Obrigado por entrar no Yards utilizando o facebook, sua senha de acesso é <strong>"+resp.birthday+"</strong> você poderá altera-la a qualquer momento dentro de nosso sistema.<i>Equipe Yards</i></html>", alternative:true}
+								   ]
+								}, function(err, message) { console.log(err || message); });
+							
+							req.session.user = saveLocal;
+							res.redirect("/home");
+						}
+						else
+							res.redirect("/login/?error="+errar);
+					});
+					
+				}	
+				
+				
+				
+			});
 		}
 			
 		
 	});
 });
 
+app.get("/login/activation/:token",function(req,res){
+	
+	DbUser.findOne({codeactivation:req.params.token,status:"W"}, function(err, user) {
+		console.log(user);
+		if(!err && user)
+		{
+			user.status = "A";
+			user.save(function(erra,sav){
+				if(!erra)
+				{
+					req.session.user = sav;
+					res.redirect("/home");
+				}
+			});
+		}
+		else
+		{
+			res.redirect("/login/?error=Token Inválido ou Já ativo.");
+			
+		}
+	});
+	
+});
+
+app.get("/create",function(req,res){
+	res.render('formCadastro',{layout: 'cadastro',title:"Bem vindo ao Yards"});
+});
+
+app.post("/login",function(req,res,next){
+	
+	console.log(req.body);
+	
+	DbUser.findOne({email:req.body.email,password:req.body.senha},function(err, user){
+		
+		if(!err && user)
+		{
+			req.session.user = user;
+			res.redirect("/home");
+		}
+		else
+		{
+			res.redirect("/login/?error=usuário ou senha inválidos");
+		}
+	});
+	
+});
+
+app.post("/create",userModule.create);
+
+
+
 app.get("/logout",function(req,res){
 	graph.setAccessToken(0);
 	
+	req.session.destroy();
+	
 	res.redirect("/");
+	
+});
+
+app.get("/cadastro",function(req,res,next){
+	
 	
 });
 

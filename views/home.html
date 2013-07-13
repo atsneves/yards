@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="/default.css">
 	<link rel="stylesheet" type="text/css" href="/master.css">
 
-	<title>Yards - Design</title>
+	<title><%= title %></title>
 	<script type="text/javascript">
 function MM_swapImgRestore() { //v3.0
   var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
@@ -42,7 +42,7 @@ function MM_swapImage() { //v3.0
 	<!-- Linha Usuário Ajuda e Opções -->    
     	<div class="ln1">
         	<ul style="float: left;">
-            	<li><b><%= facebook.name %></b></li>
+            	<li><b><%= user.name %> <%= user.lastname %></b></li>
                 <li class="li1">&nbsp;</li>
                 <li><a href="/logout">Logout</a></li>
             </ul>

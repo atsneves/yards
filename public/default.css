@@ -279,17 +279,18 @@ body{
 /* Padrões */
 
 .all{ width: 100%; height: 100%; position: absolute;}
-.col_left{ float: left; width: 30%; height: 100%;}
+.col_left{ float: left; width: 40%; height: 100%;}
 .col_right{ float: left; width: 70%; height: 100%;}
 
 /* Conteudo Col_Left*/
-.yard{ background: url('imagens/logoyard.gif') no-repeat; width:211px; height:103px; margin: 30px auto;}
+.yard{ background: url('imagens/logoyard.gif') no-repeat; width:211px; height:103px; margin: 30px 100px;}
 .csoon, .pman{ width: 380px;padding-left: 100px;}
 .pman{ font-size: 11px; font-weight: bold;} 
 
 /* Formularios */
 input[type=text]{ border: 1px solid #999; border-radius: 6px; padding: 5px; margin: 10px 5px 0 0;}
-input[type=button], .wick{
+input[type=password]{ border: 1px solid #999; border-radius: 6px; padding: 5px; margin: 10px 5px 0 0;}
+input[type=button],input[type=submit], .wick{
 
 border-top: 1px solid #6dc743;
    background: #498a24;
@@ -315,7 +316,7 @@ border-top: 1px solid #6dc743;
    border: none;
 }
 .wick{ position: absolute; top: 9px; right: 9px; padding: 6px 13px;}
-input[type=button]:hover{
+input[type=button]:hover,input[type=submit]:hover{
    background: #74ab54;
    background: -webkit-gradient(linear, left top, left bottom, from(#9ade78), to(#74ab54));
    background: -webkit-linear-gradient(top, #9ade78, #74ab54);
