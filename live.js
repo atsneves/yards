@@ -20,14 +20,14 @@ var userModule = require("./model/user.js");
 
 var authUrl = graph.getOauthUrl({
     "client_id":     "467592886661340"
-  , "redirect_uri":  "http://ec2-54-218-210-177.us-west-2.compute.amazonaws.com:2400/facebook/logged"
+  , "redirect_uri":  "http://localhost:2400/facebook/logged"
 });
 
 var conf = {
 	client_id:      '467592886661340'
 	, client_secret:  '61d508188ece22dcdb67aceed8794d24'
 	, scope:          'email, user_about_me, user_birthday, user_location, publish_stream'
-	, redirect_uri:   'http://ec2-54-218-210-177.us-west-2.compute.amazonaws.com:2400/facebook/logged'
+	, redirect_uri:   'http://localhost:2400/facebook/logged'
 };
 
 // after user click, auth `code` will be set
@@ -125,10 +125,21 @@ app.get("/facebook/logged",function(req,resp){
 	});
 });
 
+app.get("/produto/incluir",function(req,res,next){
+	if(!req.session.user)
+	{
+		res.redirect("/login/?error=Proibido acesso");
+		return;
+	}
+	
+	res.render('incluirProd',{layout: 'home',user:req.session.user,title:"Bem vindo ao Yards"});
+	
+});
+
 app.get("/home",function(req,res,next){
 	if(req.session.user)
 	{
-		res.render('index',{layout: 'home',user:req.session.user,title:"Bem vindo ao Yards"});
+		res.render('help',{layout: 'home',user:req.session.user,title:"Bem vindo ao Yards"});
 	}
 	else
 	{
@@ -162,35 +173,41 @@ app.get("/login/auth",function(req,res){
 				}
 				else
 				{
-					var usr = new DbUser();
-					
-					usr.name = resp.first_name;
-					usr.lastname =  resp.last_name;
-					usr.email = resp.email;
-					usr.password = resp.birthday;
-					usr.status = "A";
-					
-					usr.save(function(errar,saveLocal){
-						if(!errar)
-						{
-							serverMail.send({
-								   text:    "Obrigado por entrar no Yards utilizando o facebook, sua senha de acesso é "+resp.birthday+" você poderá altera-la a qualquer momento dentro de nosso sistema. \n Equipe Yards.", 
-								   from:    "Yards <atsneves@gmail.com>", 
-								   to:      resp.email,
-								   subject: "Facebook Yards",
-								   attachment: 
-								   [
-								      {data:"<html>Obrigado por entrar no Yards utilizando o facebook, sua senha de acesso é <strong>"+resp.birthday+"</strong> você poderá altera-la a qualquer momento dentro de nosso sistema.<i>Equipe Yards</i></html>", alternative:true}
-								   ]
-								}, function(err, message) { console.log(err || message); });
-							
-							req.session.user = saveLocal;
-							res.redirect("/home");
-						}
-						else
-							res.redirect("/login/?error="+errar);
+					require('crypto').randomBytes(6, function(ex, buf) {
+						
+						
+						var senha = buf.toString('hex');
+						
+						var usr = new DbUser();
+						
+						usr.name = resp.first_name;
+						usr.lastname =  resp.last_name;
+						usr.email = resp.email;
+						usr.password = senha;
+						usr.status = "A";
+						
+						usr.save(function(errar,saveLocal){
+							if(!errar)
+							{
+								serverMail.send({
+									   text:    "Obrigado por entrar no Yards utilizando o facebook, sua senha de acesso é "+resp.birthday+" você poderá altera-la a qualquer momento dentro de nosso sistema. \n Equipe Yards.", 
+									   from:    "Yards <atsneves@gmail.com>", 
+									   to:      resp.email,
+									   subject: "Facebook Yards",
+									   attachment: 
+									   [
+									      {data:"<html>Obrigado por entrar no Yards utilizando o facebook, sua senha de acesso é <strong>"+senha+"</strong> você poderá altera-la a qualquer momento dentro de nosso sistema.<i>Equipe Yards</i></html>", alternative:true}
+									   ]
+									}, function(err, message) { console.log(err || message); });
+								
+								req.session.user = saveLocal;
+								res.redirect("/home");
+							}
+							else
+								res.redirect("/login/?error="+errar);
+						});
+						
 					});
-					
 				}	
 				
 				

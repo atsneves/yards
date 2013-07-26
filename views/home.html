@@ -77,37 +77,7 @@ function MM_swapImage() { //v3.0
     <!-- Esquerda -->
     
     <div class="content1">
-    <!-- Dicas -->
-
-    	<a href="#">Home</a>
-        <div  style="margin-top: 15px;" class="boxWithe"><span class="leaf">Dicas:</span> Para criar um novo evento clique no “<span class="leaf">+</span>” ao lado de “<span class="dark">Eventos</span>”</div>
-    
-    <!-- Experiência Yards -->
-    
-        <div class="boxGray" style="margin-top: 15px;">
-        	<p><span class="dark">Deixe seu Yard mais completo.</span> Siga os passos abaixo para melhorar sua experiência no Yards.</p>
-        	<ul class="boxGul">
-            	<li><span class="leaf">1&nbsp;&nbsp; </span> Comece a adicionar produtos <a href="#">Saiba mais</a></li>
-            	<li><span class="leaf">2&nbsp;&nbsp; </span>Convide e adicione mais pessoas à sua lista de amigos <a href="#">Saiba mais</a></li>
-                <li><span class="leaf">3&nbsp;&nbsp; </span>Escolha as categorias de produtos de seu interesse <a href="#">Saiba mais</a></li>
-                <li><span class="leaf">4&nbsp;&nbsp; </span>Conecte-se a outras redes sociais <a href="#">Saiba mais</a></li>
-                <li><span class="leaf">5&nbsp;&nbsp; </span>Adicione seu local de estudo e/ou trabalho às suas informações <a href="#">Saiba mais</a></li>
-            </ul>
-        </div>
-     <!-- Fotos de Produtos -->
-        <div  style="margin-top: 15px;" class="boxWithe">
-        	<br/>
-            <br/>
-            
-            
-        <div id="nenhum">
-        <p>   
-            Seus amigos ainda não colocaram nenhum produto à venda.</p><br/><br/><br/><br/><br />
-            
-            <a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('b_convida','','/imagens/b_convide_mouse.png',1)"><img src="/imagens/b_convide.png" width="293" height="72" id="b_convida"></a> </div>
-            
-            
-        </div>
+    <%- body %>
     </div>
     
     <!-- Direita -->
@@ -119,20 +89,14 @@ function MM_swapImage() { //v3.0
         <div class="boxGray">Mensagens <span class="wick">5</span></div>
 		
         <!-- Inicio menu -->
-        <div style="margin-top: 20px;" class="boxWithe dark">Meus produto(s) 10<span class="ico2"></span><span class="ico1"></span></div>
+        <div style="margin-top: 20px;" class="boxWithe dark">Meus produto(s) 10<span class="ico2" id="submenuproduto"></span><A href="/produto/incluir"><span class="ico1"></span></a></div>
         <!-- Submenu -->
-        <ul class="submenu">
+        <ul class="submenu" id="meusprodutos">
         	<li class="boxGray noshadow">Adidas</li>
         	<li class="boxGray noshadow">Nike</li>
         	<li class="boxGray noshadow">Puma</li>
         </ul>
-        <div style="margin-top: 20px;" class="boxWithe dark">Meus produto(s) 10<span class="ico2"></span><span class="ico1"></span></div>
-        <!-- Submenu -->
-        <ul class="submenu">
-        	<li class="boxGray noshadow">Adidas</li>
-        	<li class="boxGray noshadow">Nike</li>
-        	<li class="boxGray noshadow">Puma</li>
-        </ul>
+      
     
     </div>
 </div>
@@ -140,4 +104,22 @@ function MM_swapImage() { //v3.0
 </body>
 
 </html>
+  <!-- JQUERY -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="/js/jquery-1.7.1.min.js"><\/script>')</script>
+ 	<script type="text/javascript" src="/js/scripts.js"></script>
+    <script type="text/javascript" src="/js/jquery.form.js"></script>
+    <script type="text/javascript" src="/js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.maskedinput.min.js"></script>
+<script>
+	jQuery(function($){
+	  $("#submenuproduto").click(function(){
+	  	
+	  	if (!$("#meusprodutos").is(":hidden"))
+	  		$("#meusprodutos").slideUp("slow");
+	  	else
+	  		$("#meusprodutos").slideDown("slow");
+	  });
+	});
 
+</script>        
